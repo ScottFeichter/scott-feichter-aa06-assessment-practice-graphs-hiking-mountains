@@ -8,7 +8,7 @@ function findPeak(matrix) {
     }
   }
 
-  console.log("highest: ", highest);
+  // console.log("highest: ", highest);
   return highest;
 }
 
@@ -42,13 +42,126 @@ function findStarts(matrix) {
       starts.push([i, matrix[0].length - 1]);
     }
   }
-  console.log("starts: ", starts);
+  // console.log("starts: ", starts);
   return starts;
 }
 
 function findNeighbors(node, matrix) {
   // Don't forget to include diagonal neighbors!!!
-  // Your code here
+  debugger;
+  const neighborsArr = [];
+  const neighborsObj = {};
+  const c = node[0];
+  const r = node[1];
+
+  /*
+
+    [-1, -1]  [-1, 0]  [-1, +1]
+
+    [0, -1]   [node]   [0, +1]
+
+    [+1, -1]  [+1, 0]  [+1, +1]
+
+
+  */
+
+  // [-1, -1]
+  if (matrix[c - 1] && matrix[r - 1]) {
+    if (
+      matrix[c - 1][r - 1] > matrix[c][r] + 1 ||
+      matrix[c - 1][r - 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c - 1, r - 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [-1, 0]
+  if (matrix[c - 1] && matrix[r]) {
+    if (
+      matrix[c - 1][r] > matrix[c][r] + 1 ||
+      matrix[c - 1][r] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c - 1, r]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [-1, +1]
+  if (matrix[c - 1] && [r + 1]) {
+    if (
+      matrix[c - 1][r + 1] > matrix[c][r] + 1 ||
+      matrix[c - 1][r + 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c - 1, r + 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [0, -1]
+  if (matrix[c] && matrix[r - 1]) {
+    if (
+      matrix[c][r - 1] > matrix[c][r] + 1 ||
+      matrix[c][r - 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c, r - 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [0, +1]
+  if (matrix[c] && matrix[r + 1]) {
+    if (
+      matrix[c][r + 1] > matrix[c][r] + 1 ||
+      matrix[c][r + 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c, r + 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [+1, -1]
+  if (matrix[c + 1] && matrix[r - 1]) {
+    if (
+      matrix[c + 1][r - 1] > matrix[c][r] + 1 ||
+      matrix[c + 1][r - 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c + 1, r - 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [+1, 0]
+  if (matrix[c + 1] && matrix[r]) {
+    if (
+      matrix[c + 1][r] > matrix[c][r] + 1 ||
+      matrix[c + 1][r] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c + 1, r]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  // [+1, +1]
+  if (matrix[c + 1] && matrix[r + 1]) {
+    if (
+      matrix[c + 1][r + 1] > matrix[c][r] + 1 ||
+      matrix[c + 1][r + 1] < matrix[c][r] - 1
+    ) {
+      neighborsArr.push([c + 1, r + 1]);
+    }
+  }
+  console.log(neighborsArr);
+  debugger;
+
+  return neighborsArr;
 }
 
 function pathTraversal(node, matrix, visited, peak) {
@@ -65,13 +178,15 @@ function identifyPath(mountain) {
 // Uncomment for local testing
 
 // // Example 0
-// const mountain_0 = [
-//     [1, 2, 4],
-//     [4, 5, 9],
-//     [5, 7, 6]
-// ];
+const mountain_0 = [
+  [1, 2, 4],
+  [4, 5, 9],
+  [5, 7, 6],
+];
 
-// console.log(findNeighbors([2,0], mountain_0)) // <- Expect '[ [ 1, 0 ], [ 1, 1 ] ]'
+// console.log(mountain_0[4,4]);
+console.log(findNeighbors([2, 0], mountain_0));
+// <- Expect '[ [ 1, 0 ], [ 1, 1 ] ]'
 
 // // Example 1
 // const mountain_1 = [
